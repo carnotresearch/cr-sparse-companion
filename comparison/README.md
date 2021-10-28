@@ -5,3 +5,4 @@ This directory provides micro-benchmarks for comparison with functionality provi
 
 - [PyLops](pylops/README.md)
 - [scikit-learn](scikit-learn/README.md)
+- [MATLAB research codes](matlab/README.md)
