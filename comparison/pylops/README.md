@@ -1,3 +1,3 @@
 # Comparison with PyLops
 
-- [Image deblurring with FISTA](image_deblurring.ipynb)
+- [Image deblurring with LSQR](image_deblurring.ipynb)
