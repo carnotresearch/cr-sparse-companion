@@ -1,4 +1,5 @@
-# cr-sparse-evaluation
+# CR-Sparse-Companion
+
 Companion examples, benchmarks and reports for evaluation of [CR-Sparse](https://github.com/carnotresearch/cr-sparse) library
 
 
