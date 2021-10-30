@@ -15,3 +15,7 @@
 ## Calculus operators
 
 - [First derivative](calculus/first_derivative.ipynb)
+
+## Wavelets
+
+- [HAAR DWT2](wavelets/haar_dwt2.ipynb)
