@@ -3,6 +3,8 @@
 
 format: jb-book
 root: intro
+options:
+  numbered: true
 chapters:
 - file: modules/linear_operators/chapter
 - file: modules/l1/chapter
@@ -17,10 +19,6 @@ chapters:
   - file: modules/wavelets/examples/wavelet_info
   - file: modules/wavelets/examples/discrete/wavelet_scaling_functions
   - file: modules/wavelets/examples/discrete/2d/cameraman_bior
-- file: modules/utils
-  sections:
-  - file: modules/norms
-  - file: system_info
 - file: comparison/pylops/chapter
   sections:
   - file: comparison/pylops/basic_ops/matrix_mult
@@ -37,3 +35,7 @@ chapters:
 - file: comparison/scikit-learn/chapter
   sections:
   - file: comparison/scikit-learn/omp
+- file: modules/utils
+  sections:
+  - file: modules/norms
+  - file: system_info

@@ -3,9 +3,12 @@
 
 title: CR-Sparse Companion
 author: Shailesh Kumar
+only_build_toc_files: true
+exclude_patterns : [_build, "**.ipynb_checkpoints", "README.md"]
 
 execute:
   execute_notebooks: auto
+  timeout: 300
 
 # Define the name of the latex output file for PDF builds
 latex:
