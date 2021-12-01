@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4.1. Wavelet Information &#8212; CR-Sparse Companion</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="4.2. Scaling and Wavelet Functions" href="discrete/wavelet_scaling_functions.html" />
+    <link rel="prev" title="4. Wavelets" href="../chapter.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">CR-Sparse Companion</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../intro.html">
+   CR-Sparse Companion
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../linear_operators/chapter.html">
+   1. Linear Operators
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../l1/chapter.html">
+   2. L1 Minimization Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../l1/yall1/examples/basis_pursuit-denoising.html">
+     2.1. Basis Pursuit Denoising via ADMM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../l1/yall1/examples/basis_pursuit.html">
+     2.2. Basis Pursuit via ADMM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../pursuit/chapter.html">
+   3. Greedy Pursuit Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../pursuit/htp/benchmarks/runtime_large_sensing_matrix.html">
+     3.1. Runtime of Hard Thresholding Pursuit on Large Sensing Matrices
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../chapter.html">
+   4. Wavelets
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.1. Wavelet Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="discrete/wavelet_scaling_functions.html">
+     4.2. Scaling and Wavelet Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="discrete/2d/cameraman_bior.html">
+     4.3. Wavelet Decomposition and Reconstruction of an Image
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../comparison/pylops/chapter.html">
+   5. Comparison with PyLops
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../comparison/pylops/basic_ops/matrix_mult.html">
+     5.1. Matrix Multiplication Operator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../comparison/pylops/basic_ops/diagonal.html">
+     5.2. Diagonal Operator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../comparison/pylops/calculus/first_derivative.html">
+     5.3. First Derivative Operator
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../comparison/pylops/wavelets/haar_dwt2.html">
+     5.4. HAAR DWT2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../comparison/matlab/chapter.html">
+   6. Comparison with MATLAB codes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../comparison/matlab/lanbpro/lanbpro_large_matrix_test.html">
+     6.1. Lanczos Diagonalization with Partial Reorthogonalization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../comparison/pywavelets/chapter.html">
+   7. Comparison with PyWavelets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../comparison/pywavelets/scaling_wavelet_functions.html">
+     7.1. Wavelet Scaling Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../comparison/pywavelets/cameraman_bior.html">
+     7.2. 2D Wavelet Decomposition and Reconstruction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../comparison/scikit-learn/chapter.html">
+   8. Comparison with Scikit-Learn
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../comparison/scikit-learn/omp.html">
+     8.1. Orthogonal Matching Pursuit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../utils.html">
+   9. Utilities
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../norms.html">
+     9.1. Computation of row-wise and column-wise norms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../system_info.html">
+     9.2. SYSTEM INFORMATION
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/modules/wavelets/examples/wavelet_info.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/carnotresearch/cr-sparse-companionk"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/carnotresearch/cr-sparse-companionk/issues/new?title=Issue%20on%20page%20%2Fmodules/wavelets/examples/wavelet_info.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/carnotresearch/cr-sparse-companionk/main?urlpath=tree/modules/wavelets/examples/wavelet_info.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wavelet-families">
+   4.1.1. Wavelet families
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-of-all-supported-wavelets">
+     4.1.1.1. List of all supported wavelets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-of-wavelets-for-a-specific-family">
+     4.1.1.2. List of wavelets for a specific family
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-orthogonal-discrete-wavelet">
+   4.1.2. An orthogonal discrete wavelet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-biorthogonal-discrete-wavelet">
+   4.1.3. A biorthogonal discrete wavelet
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="wavelet-information">
+<h1><span class="section-number">4.1. </span>Wavelet Information<a class="headerlink" href="#wavelet-information" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cr.sparse.wt</span> <span class="k">as</span> <span class="nn">wt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="wavelet-families">
+<h2><span class="section-number">4.1.1. </span>Wavelet families<a class="headerlink" href="#wavelet-families" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wt</span><span class="o">.</span><span class="n">families</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;haar&#39;, &#39;db&#39;, &#39;sym&#39;, &#39;coif&#39;, &#39;bior&#39;, &#39;rbio&#39;, &#39;dmey&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="list-of-all-supported-wavelets">
+<h3><span class="section-number">4.1.1.1. </span>List of all supported wavelets<a class="headerlink" href="#list-of-all-supported-wavelets" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">wt</span><span class="o">.</span><span class="n">wavelist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;bior1.1&#39;, &#39;bior1.3&#39;, &#39;bior1.5&#39;, &#39;bior2.2&#39;, &#39;bior2.4&#39;, &#39;bior2.6&#39;, &#39;bior2.8&#39;, &#39;bior3.1&#39;, &#39;bior3.3&#39;, &#39;bior3.5&#39;, &#39;bior3.7&#39;, &#39;bior3.9&#39;, &#39;bior4.4&#39;, &#39;bior5.5&#39;, &#39;bior6.8&#39;, &#39;cmor&#39;, &#39;coif1&#39;, &#39;coif2&#39;, &#39;coif3&#39;, &#39;coif4&#39;, &#39;coif5&#39;, &#39;coif6&#39;, &#39;coif7&#39;, &#39;coif8&#39;, &#39;coif9&#39;, &#39;coif10&#39;, &#39;coif11&#39;, &#39;coif12&#39;, &#39;coif13&#39;, &#39;coif14&#39;, &#39;coif15&#39;, &#39;coif16&#39;, &#39;coif17&#39;, &#39;db1&#39;, &#39;db2&#39;, &#39;db3&#39;, &#39;db4&#39;, &#39;db5&#39;, &#39;db6&#39;, &#39;db7&#39;, &#39;db8&#39;, &#39;db9&#39;, &#39;db10&#39;, &#39;db11&#39;, &#39;db12&#39;, &#39;db13&#39;, &#39;db14&#39;, &#39;db15&#39;, &#39;db16&#39;, &#39;db17&#39;, &#39;db18&#39;, &#39;db19&#39;, &#39;db20&#39;, &#39;db21&#39;, &#39;db22&#39;, &#39;db23&#39;, &#39;db24&#39;, &#39;db25&#39;, &#39;db26&#39;, &#39;db27&#39;, &#39;db28&#39;, &#39;db29&#39;, &#39;db30&#39;, &#39;db31&#39;, &#39;db32&#39;, &#39;db33&#39;, &#39;db34&#39;, &#39;db35&#39;, &#39;db36&#39;, &#39;db37&#39;, &#39;db38&#39;, &#39;dmey&#39;, &#39;haar&#39;, &#39;mexh&#39;, &#39;rbio1.1&#39;, &#39;rbio1.3&#39;, &#39;rbio1.5&#39;, &#39;rbio2.2&#39;, &#39;rbio2.4&#39;, &#39;rbio2.6&#39;, &#39;rbio2.8&#39;, &#39;rbio3.1&#39;, &#39;rbio3.3&#39;, &#39;rbio3.5&#39;, &#39;rbio3.7&#39;, &#39;rbio3.9&#39;, &#39;rbio4.4&#39;, &#39;rbio5.5&#39;, &#39;rbio6.8&#39;, &#39;sym2&#39;, &#39;sym3&#39;, &#39;sym4&#39;, &#39;sym5&#39;, &#39;sym6&#39;, &#39;sym7&#39;, &#39;sym8&#39;, &#39;sym9&#39;, &#39;sym10&#39;, &#39;sym11&#39;, &#39;sym12&#39;, &#39;sym13&#39;, &#39;sym14&#39;, &#39;sym15&#39;, &#39;sym16&#39;, &#39;sym17&#39;, &#39;sym18&#39;, &#39;sym19&#39;, &#39;sym20&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-of-wavelets-for-a-specific-family">
+<h3><span class="section-number">4.1.1.2. </span>List of wavelets for a specific family<a class="headerlink" href="#list-of-wavelets-for-a-specific-family" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">wt</span><span class="o">.</span><span class="n">wavelist</span><span class="p">(</span><span class="s1">&#39;sym&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sym2&#39;, &#39;sym3&#39;, &#39;sym4&#39;, &#39;sym5&#39;, &#39;sym6&#39;, &#39;sym7&#39;, &#39;sym8&#39;, &#39;sym9&#39;, &#39;sym10&#39;, &#39;sym11&#39;, &#39;sym12&#39;, &#39;sym13&#39;, &#39;sym14&#39;, &#39;sym15&#39;, &#39;sym16&#39;, &#39;sym17&#39;, &#39;sym18&#39;, &#39;sym19&#39;, &#39;sym20&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">wt</span><span class="o">.</span><span class="n">wavelist</span><span class="p">(</span><span class="s1">&#39;bior&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;bior1.1&#39;, &#39;bior1.3&#39;, &#39;bior1.5&#39;, &#39;bior2.2&#39;, &#39;bior2.4&#39;, &#39;bior2.6&#39;, &#39;bior2.8&#39;, &#39;bior3.1&#39;, &#39;bior3.3&#39;, &#39;bior3.5&#39;, &#39;bior3.7&#39;, &#39;bior3.9&#39;, &#39;bior4.4&#39;, &#39;bior5.5&#39;, &#39;bior6.8&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="an-orthogonal-discrete-wavelet">
+<h2><span class="section-number">4.1.2. </span>An orthogonal discrete wavelet<a class="headerlink" href="#an-orthogonal-discrete-wavelet" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span> <span class="o">=</span> <span class="n">wt</span><span class="o">.</span><span class="n">build_wavelet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;db2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wavelet db2
+  Family name:    Daubechies
+  Short name:     db
+  Filters length: 4
+  Orthogonal:     True
+  Biorthogonal:   True
+  Symmetry:       asymmetric
+  DWT:            True
+  CWT:            False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dec_lo</span><span class="p">,</span> <span class="n">dec_hi</span><span class="p">,</span> <span class="n">rec_lo</span><span class="p">,</span> <span class="n">rec_hi</span> <span class="o">=</span> <span class="n">wavelet</span><span class="o">.</span><span class="n">filter_bank</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dec_lo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dec_hi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rec_lo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rec_hi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.12940952  0.22414386  0.8365163   0.4829629 ]
+[-0.4829629   0.8365163  -0.22414386 -0.12940952]
+[ 0.4829629   0.8365163   0.22414386 -0.12940952]
+[-0.12940952 -0.22414386  0.8365163  -0.4829629 ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">dec_lo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeviceArray([-0.12940952,  0.22414386,  0.8365163 ,  0.4829629 ], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">dec_hi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeviceArray([-0.4829629 ,  0.8365163 , -0.22414386, -0.12940952], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">rec_lo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeviceArray([ 0.4829629 ,  0.8365163 ,  0.22414386, -0.12940952], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">rec_hi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeviceArray([-0.12940952, -0.22414386,  0.8365163 , -0.4829629 ], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">orthogonal</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">biorthogonal</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">compact_support</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;db2&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">family_name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Daubechies&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">short_name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;db&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">vanishing_moments_psi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">vanishing_moments_phi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">symmetry</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SYMMETRY.ASYMMETRIC: 0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">inverse_filter_bank</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(DeviceArray([-0.12940952,  0.22414386,  0.8365163 ,  0.4829629 ], dtype=float32),
+ DeviceArray([-0.4829629 ,  0.8365163 , -0.22414386, -0.12940952], dtype=float32),
+ DeviceArray([ 0.4829629 ,  0.8365163 ,  0.22414386, -0.12940952], dtype=float32),
+ DeviceArray([-0.12940952, -0.22414386,  0.8365163 , -0.4829629 ], dtype=float32))
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-biorthogonal-discrete-wavelet">
+<h2><span class="section-number">4.1.3. </span>A biorthogonal discrete wavelet<a class="headerlink" href="#a-biorthogonal-discrete-wavelet" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span> <span class="o">=</span> <span class="n">wt</span><span class="o">.</span><span class="n">build_wavelet</span><span class="p">(</span><span class="s2">&quot;bior2.2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wavelet bior2.2
+  Family name:    Biorthogonal
+  Short name:     bior
+  Filters length: 6
+  Orthogonal:     False
+  Biorthogonal:   True
+  Symmetry:       symmetric
+  DWT:            True
+  CWT:            False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span><span class="o">.</span><span class="n">filter_bank</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(DeviceArray([ 0.        , -0.17677669,  0.35355338,  1.0606601 ,
+               0.35355338, -0.17677669], dtype=float32),
+ DeviceArray([-0.        ,  0.35355338, -0.70710677,  0.35355338,
+              -0.        ,  0.        ], dtype=float32),
+ DeviceArray([0.        , 0.35355338, 0.70710677, 0.35355338, 0.        ,
+              0.        ], dtype=float32),
+ DeviceArray([ 0.        ,  0.17677669,  0.35355338, -1.0606601 ,
+               0.35355338,  0.17677669], dtype=float32))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelet</span> <span class="o">=</span> <span class="n">wt</span><span class="o">.</span><span class="n">build_wavelet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rbio2.4&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wavelet</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wavelet rbio2.4
+  Family name:    Reverse biorthogonal
+  Short name:     rbio
+  Filters length: 10
+  Orthogonal:     False
+  Biorthogonal:   True
+  Symmetry:       symmetric
+  DWT:            True
+  CWT:            False
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./modules/wavelets/examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../chapter.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Wavelets</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="discrete/wavelet_scaling_functions.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Scaling and Wavelet Functions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Shailesh Kumar<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

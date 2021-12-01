@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSC-OMP on synthetic data &#8212; CR-Sparse Companion</title>
+    
+  <link href="../../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">CR-Sparse Companion</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../intro.html">
+   CR-Sparse Companion
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../linear_operators/chapter.html">
+   Linear Operators
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../l1/chapter.html">
+   L1 Minimization Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../l1/yall1/examples/basis_pursuit-denoising.html">
+     Basis Pursuit Denoising via ADMM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../l1/yall1/examples/basis_pursuit.html">
+     Basis Pursuit via ADMM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../pursuit/chapter.html">
+   Greedy Pursuit Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../pursuit/htp/benchmarks/runtime_large_sensing_matrix.html">
+     Runtime of Hard Thresholding Pursuit on Large Sensing Matrices
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../wavelets/chapter.html">
+   Wavelets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../wavelets/examples/wavelet_info.html">
+     Wavelet Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../wavelets/examples/discrete/wavelet_scaling_functions.html">
+     Scaling and Wavelet Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../wavelets/examples/discrete/2d/cameraman_bior.html">
+     Wavelet Decomposition and Reconstruction of an Image
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../utils.html">
+   Utilities
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../norms.html">
+     Computation of row-wise and column-wise norms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../system_info.html">
+     SYSTEM INFORMATION
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../comparison/pylops/chapter.html">
+   Comparison with PyLops
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../comparison/pylops/wavelets/haar_dwt2.html">
+     HAAR DWT2
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../comparison/matlab/chapter.html">
+   Comparison with MATLAB codes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../comparison/pywavelets/chapter.html">
+   Comparison with PyWavelets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../comparison/scikit-learn/chapter.html">
+   Comparison with Scikit-Learn
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../comparison/scikit-learn/omp.html">
+     Orthogonal Matching Pursuit
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../_sources/modules/clustering/ssc_omp/benchmarks/ssc_omp_synthetic_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/carnotresearch/cr-sparse-companionk"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/carnotresearch/cr-sparse-companionk/issues/new?title=Issue%20on%20page%20%2Fmodules/clustering/ssc_omp/benchmarks/ssc_omp_synthetic_data.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/carnotresearch/cr-sparse-companionk/main?urlpath=tree/modules/clustering/ssc_omp/benchmarks/ssc_omp_synthetic_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="ssc-omp-on-synthetic-data">
+<h1>SSC-OMP on synthetic data<a class="headerlink" href="#ssc-omp-on-synthetic-data" title="Permalink to this headline">¶</a></h1>
+<p>In this example:</p>
+<ul class="simple">
+<li><p>We consider <span class="math notranslate nohighlight">\(\mathbb{R}^M\)</span> as our ambient space of data with <span class="math notranslate nohighlight">\(M=9\)</span>.</p></li>
+<li><p>We sample <span class="math notranslate nohighlight">\(K=5\)</span> low dimensional subspaces from it. Each subspace is represented by an orthonormal basis for it.</p></li>
+<li><p>Each subspace is of dimension <span class="math notranslate nohighlight">\(D=6\)</span>.</p></li>
+<li><p>We then sample <span class="math notranslate nohighlight">\(S_k = 10000\)</span> points from each subspace and put them together in a data matrix <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>Total number of points is <span class="math notranslate nohighlight">\(S=50000\)</span>.</p></li>
+<li><p>We assign a (true) label to each data point point.</p></li>
+<li><p>We then use OMP algorithm to build a self expressive representation of each point in terms of other points.</p></li>
+<li><p>If things go well, we hope that OMP will choose points from the same subspace to create a sparse representation of each point in <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>Since each subspace is <span class="math notranslate nohighlight">\(D\)</span> dimensional, each point will be represented in terms of <span class="math notranslate nohighlight">\(D\)</span> other points.</p></li>
+<li><p>We assemble these representations into a sparse matrix <span class="math notranslate nohighlight">\(Z\)</span> which has exactly <span class="math notranslate nohighlight">\(DS\)</span> non-zero entries. This and following steps use the <code class="docutils literal notranslate"><span class="pre">jax.experimental.sparse.BCOO</span></code> for efficiently storing the sparse matrices.</p></li>
+<li><p>We construct an affinity matrix <span class="math notranslate nohighlight">\(W = |C| + |C^T|\)</span>.</p></li>
+<li><p>We run spectral clustering to cluster these data points into <span class="math notranslate nohighlight">\(K\)</span> clusters using the affinity matrix <span class="math notranslate nohighlight">\(W\)</span> as input.</p></li>
+<li><p>We use Hungarian algorithm to map the true labels with the labels assigned by spectral clustering.</p></li>
+<li><p>We then measure the clustering error (number of points not assigned into the correct cluster).</p></li>
+<li><p>We also preserve the subspace preservation ratio. i.e. in the <span class="math notranslate nohighlight">\(D\)</span>-sparse representation for each point, how many of the contributing points were from the same subspace.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jax.config</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;jax_enable_x64&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+<span class="kn">import</span> <span class="nn">cr.sparse</span> <span class="k">as</span> <span class="nn">crs</span>
+<span class="kn">import</span> <span class="nn">cr.sparse.data</span> <span class="k">as</span> <span class="nn">crdata</span>
+<span class="kn">import</span> <span class="nn">cr.sparse.la.subspaces</span>
+<span class="kn">import</span> <span class="nn">cr.sparse.cluster</span> <span class="k">as</span> <span class="nn">cluster</span>
+<span class="kn">import</span> <span class="nn">cr.sparse.cluster.ssc</span> <span class="k">as</span> <span class="nn">ssc</span>
+<span class="kn">import</span> <span class="nn">cr.sparse.cluster.spectral</span> <span class="k">as</span> <span class="nn">spectral</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambient space dimension</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="c1"># Number of subspaces</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="c1"># common dimension for each subspace</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="c1"># Number of points per subspace</span>
+<span class="n">Sk</span> <span class="o">=</span> <span class="mi">10000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select orthnormal bases for K random subspaces of dimension D  </span>
+<span class="n">bases</span> <span class="o">=</span> <span class="n">crdata</span><span class="o">.</span><span class="n">random_subspaces_jit</span><span class="p">(</span><span class="n">crs</span><span class="o">.</span><span class="n">KEYS</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="n">cluster_sizes</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span> <span class="n">Sk</span>
+<span class="c1"># Select Sk points for each subspace</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">crdata</span><span class="o">.</span><span class="n">uniform_points_on_subspaces_jit</span><span class="p">(</span><span class="n">crs</span><span class="o">.</span><span class="n">KEYS</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bases</span><span class="p">,</span> <span class="n">Sk</span><span class="p">)</span>
+<span class="c1"># cluster labels for each of them</span>
+<span class="n">true_labels</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">K</span><span class="p">),</span> <span class="n">Sk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="c1"># build sparse representations in batches</span>
+<span class="n">Z</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">batch_build_representation_omp_jit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> ssc.batch_build_representation_omp_jit(X, D, batch_size)[0].block_until_ready()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.2 s ± 50 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combine values and indices to form full representation</span>
+<span class="n">Z_sp</span> <span class="o">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">sparse_to_bcoo</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build the affinity matrix</span>
+<span class="n">affinity</span> <span class="o">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">rep_to_affinity</span><span class="p">(</span><span class="n">Z_sp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform the spectral clustering on the affinity matrix</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">spectral</span><span class="o">.</span><span class="n">normalized_symmetric_sparse_fast_k_jit</span><span class="p">(</span><span class="n">crs</span><span class="o">.</span><span class="n">KEYS</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">affinity</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> spectral.normalized_symmetric_sparse_fast_k_jit(crs.KEYS[2], affinity, K).assignment.block_until_ready()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>867 ms ± 1.59 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predicted cluster labels</span>
+<span class="n">pred_labels</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">assignment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clust_err</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">clustering_error_k</span><span class="p">(</span><span class="n">true_labels</span><span class="p">,</span> <span class="n">pred_labels</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clust_err</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num_missed: 857, error: 0.02, error_perc: 1.71
+[3 2 4 1 0]
+0=&gt;3, 1=&gt;2, 2=&gt;4, 3=&gt;1, 4=&gt;0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># subspace preservation stats</span>
+<span class="n">spr_stats</span> <span class="o">=</span> <span class="n">ssc</span><span class="o">.</span><span class="n">sparse_subspace_preservation_stats_jit</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">true_labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spr_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>spr_error: 0.02348690787086873, spr_flag: False, spr_perc: 92.134
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./modules/clustering/ssc_omp/benchmarks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Shailesh Kumar<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
