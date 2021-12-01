@@ -1,0 +1,39 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: modules/linear_operators/chapter
+- file: modules/l1/chapter
+  sections:
+  - file: modules/l1/yall1/examples/basis_pursuit-denoising
+  - file: modules/l1/yall1/examples/basis_pursuit
+- file: modules/pursuit/chapter
+  sections:
+  - file: modules/pursuit/htp/benchmarks/runtime_large_sensing_matrix
+- file: modules/wavelets/chapter
+  sections:
+  - file: modules/wavelets/examples/wavelet_info
+  - file: modules/wavelets/examples/discrete/wavelet_scaling_functions
+  - file: modules/wavelets/examples/discrete/2d/cameraman_bior
+- file: modules/utils
+  sections:
+  - file: modules/norms
+  - file: system_info
+- file: comparison/pylops/chapter
+  sections:
+  - file: comparison/pylops/basic_ops/matrix_mult
+  - file: comparison/pylops/basic_ops/diagonal
+  - file: comparison/pylops/calculus/first_derivative
+  - file: comparison/pylops/wavelets/haar_dwt2
+- file: comparison/matlab/chapter
+  sections:
+  - file: comparison/matlab/lanbpro/lanbpro_large_matrix_test
+- file: comparison/pywavelets/chapter
+  sections:
+  - file: comparison/pywavelets/scaling_wavelet_functions
+  - file: comparison/pywavelets/cameraman_bior
+- file: comparison/scikit-learn/chapter
+  sections:
+  - file: comparison/scikit-learn/omp
