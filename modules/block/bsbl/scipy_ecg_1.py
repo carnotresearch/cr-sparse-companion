@@ -19,7 +19,6 @@ from scipy.misc import electrocardiogram
 # Miscellaneous
 from scipy.signal import detrend, butter, filtfilt
 
-
 def main():
 
     ecg = electrocardiogram()
@@ -27,6 +26,7 @@ def main():
     fs = 360
 
     N = 1000
+    max_iters = 20
 
     # We shall only process one signal in this demo
     x = ecg[:N]
@@ -50,7 +50,7 @@ def main():
 
     # BSBL-EM
     start = timeit.default_timer()
-    options = bsbl.bsbl_em_options(y, prune_gamma=0)
+    options = bsbl.bsbl_em_options(y, prune_gamma=0, max_iters=max_iters)
     sol = bsbl.bsbl_em_jit(Phi, y, 25, options=options)
     stop = timeit.default_timer()
     print(f'Time: {stop - start:.2f} sec', )
@@ -59,7 +59,7 @@ def main():
     print(f'BSBL-EM: SNR: {crn.signal_noise_ratio(x, x_hat):.2f} dB, PRD: {crn.percent_rms_diff(x, x_hat):.1f}%')
 
     # BSBL-BO
-    options = bsbl.bsbl_bo_options(y, prune_gamma=0)
+    options = bsbl.bsbl_bo_options(y, prune_gamma=0, max_iters=max_iters)
     start = timeit.default_timer()
     sol = bsbl.bsbl_bo_jit(Phi, y, 25, options=options)
     stop = timeit.default_timer()
@@ -69,7 +69,7 @@ def main():
     print(f'BSBL-BO: SNR: {crn.signal_noise_ratio(x, x_hat):.2f} dB, PRD: {crn.percent_rms_diff(x, x_hat):.1f}%')
 
     # BSBL-BO-NP
-    options = bsbl.bsbl_bo_options(y)
+    options = bsbl.bsbl_bo_options(y, max_iters=max_iters)
     start = timeit.default_timer()
     sol = bsbl.bsbl_bo_np_jit(Phi, y, 25, options=options)
     stop = timeit.default_timer()
