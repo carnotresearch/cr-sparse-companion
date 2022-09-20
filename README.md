@@ -9,6 +9,6 @@ Companion examples, benchmarks and reports for evaluation of [CR-Sparse](https:/
 
 ## Modules
 
-- [Linear Operators](modules/linear_operators/README.md)
-- [Pursuit Algorithms](modules/pursuit/README.md)
+- [Linear Operators](modules/operators/linear/README.md)
+- [Sparse Reconstruction](modules/reconstruction/README.md)
 - [Wavelets](modules/wavelets/README.md)

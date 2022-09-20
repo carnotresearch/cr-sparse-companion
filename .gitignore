@@ -131,3 +131,6 @@ dmypy.json
 
 *.sh
 _build
+
+# for markdown local builds
+*.html
